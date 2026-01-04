@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="GARDO: Reinforcing Diffusion Models without Reward Hacking">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GARDO</title>
+  
+    <link rel="stylesheet" href="./static/css/own.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="./static/css/custom.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Shantell+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css" rel="stylesheet"/>
+    <script defer src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/js/bulma-carousel.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="./static/css/index.min.css">
+    <script defer src="./static/js/index.min.js"></script>
+    <script defer src="static/js/fontawesome.all.min.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_HTMLorMML-full"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+</head>
+
+
+<body>
+
+    <section class="hero">
+        <!-- <div class="hero-body-background"> -->
+            <!-- <div class="hero-body-background-div" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); z-index: 1;"></div> -->
+            <div class="columns is-centered" style="z-index: 1; margin-top: 20px">
+                <div class="column has-text-centered ">
+                    <div class="title is-1 high-font" style="color: #1c1a1a;">
+                        <br>
+                    GARDO: Reinforcing Diffusion Models without Reward Hacking
+            </div>
+                    <div class="publication-authors authors-font" style="color: #0c0c0c;font-weight: bold;font-family:DMSerifText;">
+                        
+                        <span class="author-block sansfont"><a href="https://tinnerhrhe.github.io" style="color: inherit !important; text-decoration: none !important;">Haoran He</a><sup>1,2</sup>&nbsp;&nbsp;&nbsp;</span>
+                        <span class="author-block sansfont"><a href="https://yuxiaooye.github.io/" style="color: inherit !important; text-decoration: none !important;">Yuxiao Ye</a><sup>1</sup>&nbsp;&nbsp;&nbsp;</span>
+                        <span class="author-block sansfont"><a href="https://jieliu.site/" style="color: inherit !important; text-decoration: none !important;">Jie Liu</a><sup>3</sup>&nbsp;&nbsp;&nbsp;</span>
+                        <span class="author-block sansfont"><a href="https://scholar.google.com/citations?hl=en&user=xNxlvjEAAAAJ" style="color: inherit !important; text-decoration: none !important;">Jiajun Liang</a><sup>2</sup>&nbsp;&nbsp;&nbsp;</span>
+                        <span class="author-block sansfont"><a href="https://zhiyongwangwzy.github.io/" style="color: inherit !important; text-decoration: none !important;">Zhiyong Wang</a><sup>4</sup>&nbsp;&nbsp;&nbsp;</span>
+                        <span class="author-block sansfont"><a href="https://scholar.google.com/citations?user=fWxWEzsAAAAJ&hl=en" style="color: inherit !important; text-decoration: none !important;">Ziyang Yuan</a><sup>2</sup>&nbsp;&nbsp;&nbsp;</span>
+                        <span class="author-block sansfont"><a href="https://xinntao.github.io/" style="color: inherit !important; text-decoration: none !important;">Xintao Wang</a><sup>2</sup>&nbsp;&nbsp;&nbsp;</span>
+                        <span class="author-block sansfont"><a href="https://openreview.net/profile?id=~Hangyu_Mao2" style="color: inherit !important; text-decoration: none !important;">Hangyu Mao</a><sup>2</sup>&nbsp;&nbsp;&nbsp;</span>
+                        <span class="author-block sansfont"><a href="https://scholar.google.com/citations?user=P6MraaYAAAAJ&hl=en" style="color: inherit !important; text-decoration: none !important;">Pengfei Wan</a><sup>2</sup>&nbsp;&nbsp;&nbsp;</span> 
+                        <span class="author-block sansfont"><a href="https://ling-pan.github.io/" style="color: inherit !important; text-decoration: none !important;">Ling Pan</a><sup>1</sup>&nbsp;&nbsp;&nbsp;</span>
+                        <br>
+                        <!-- <img src="./assets/UST_L3.png" width="20%" style="margin-right: 70px;"></img>
+                        <img src="./assets/Kuaishou_logo.png" width="6%" style="margin-right: 40px;"></img> -->
+                
+                    </div>
+                    
+                    <div class="publication-authors authors-font" style="color: #0a0a0a;font-weight: bold;font-family:DMSerifText; margin-bottom: 4pt;">
+                        <span class="author-block sansfont"><sup>1</sup>Hong Kong University of Science and Technology</span>
+                        <span class="author-block sansfont">&nbsp;&nbsp;</span>
+                        <span class="author-block sansfont"><sup>2</sup>KwaiVGI, Kuaishou Technology</span>
+                        <span class="author-block sansfont">&nbsp;&nbsp;</span>
+                        <span class="author-block sansfont"><sup>3</sup>CUHK MMLab</span>
+                        <span class="author-block sansfont">&nbsp;&nbsp;</span>
+                        <span class="author-block sansfont"><sup>4</sup>The University of Edinburgh</span>
+                    </div>
+                    <div class="column has-text-centered" style="font-family:DMSerifText">
+                        <div class="publication-links">
+                            <span class="link-block">
+                                <a href="https://arxiv.org/abs/2512.24138" class="external-link button is-normal is-rounded light-btn btn-font">
+                                <span class="icon">
+                                    <i class="ai ai-arxiv"></i>
+                                </span>
+                                <span class="sansfont">arXiv</span>
+                                </a>
+                            </span>
+    
+                            <span class="link-block">
+                                <a href="https://github.com/tinnerhrhe/GARDO" class="external-link button is-normal is-rounded light-btn btn-font">
+                                <span class="icon">
+                                    <i class="fab fa-github"></i>
+                                </span>
+                                <span class="sansfont">Code (coming soon)</span>
+                                </a>
+                            </span>
+                            <span class="link-block">
+                                <a href="" class="external-link button is-normal is-rounded light-btn btn-font">
+                                <span class="icon">
+                                    <i class="fa-brands fa-x-twitter"></i>
+                                </span>
+                                <span class="sansfont">Threads</span>
+                                </a>
+                            </span>
+                            
+    
+    
+                        </div>
+    
+                    </div>
+    
+                </div>
+            <!-- </div> -->
+    
+        <!-- </div> -->
+    </section>
+    <br>
+   
+    
+    <section class="hero">
+        <div class="hero-body-subtitle-light"  style="display: block">
+            <div class="columns is-centered has-text-centered">
+                <div class="container is-max-maxwidth">
+                    <div class="title is-2" style="font-family:'Georgia';color:#151414; font-size: 68px;">
+                        Abstract
+                    </div>
+                    <!-- <figure> -->
+                        <!-- <figcaption> -->
+                            <p>
+                            Fine-tuning diffusion models via online reinforcement learning (RL) has shown great potential for enhancing text-to-image alignment. However, since precisely specifying a ground-truth objective for visual tasks remains challenging, the models are often optimized using a proxy reward that only partially captures the true goal. This mismatch often leads to reward hacking, where proxy scores increase while real image quality deteriorates and generation diversity collapses. While common solutions add regularization against the reference policy to prevent reward hacking, they compromise sample efficiency and impede the exploration of novel, high-reward regions, as the reference policy is usually sub-optimal. To address the competing demands of sample efficiency, effective exploration, and mitigation of reward hacking, we propose <b>G</b>ated and <b>A</b>daptive <b>R</b>egularization with <b>D</b>iversity-aware <b>O</b>ptimization (<b>GARDO</b>), a versatile framework compatible with various RL algorithms. Our key insight is that regularization need not be applied universally; instead, it is highly effective to selectively penalize a subset of samples that exhibit high uncertainty. To address the exploration challenge, GARDO introduces an adaptive regularization mechanism wherein the reference model is periodically updated to match the capabilities of the online policy, ensuring a relevant regularization target. To address the mode collapse issue in RL, GARDO amplifies the rewards for high-quality samples that also exhibit high diversity, encouraging mode coverage without destabilizing the optimization process. Extensive experiments across diverse proxy rewards and hold-out unseen metrics consistently show that GARDO mitigates reward hacking and enhances generation diversity without sacrificing sample efficiency or exploration, highlighting its effectiveness and robustness.
+                            </p>
+                        <!-- </figcaption><br> -->
+                        
+                    <!-- </figure> -->
+                </div>
+            </div>
+    
+        </div>
+        <div class="content has-text-justified" style="max-width: 900px; margin: 1px auto; padding: 0 20px;">
+           <div class="columns is-centered has-text-centered">
+            <div class="title is-2" style="font-family:'Georgia';color:#151414; font-size: 68px;">
+                        Takeaways
+            </div>
+            </div>
+        <div>
+            <p><b><span style="color: rgb(6, 109, 219)">&#128073; Takeaway 1:</span></b> Regularization is not universally required. It is required
+only for samples with spurious proxy reward.
+                
+            </p>
+            <p><b><span style="color: rgb(6, 109, 219)">&#128073; Takeaway 2:</span></b> A static reference model inevitably becomes a con-
+straint on RL optimization. Dynamically updating the reference model facilitates prolonged improvement.
+            </p>
+             <p><b><span style="color: rgb(6, 109, 219)">&#128073; Takeaway 3:</span></b> Multiplicative advantage reshaping exclusively within
+positive samples enables robust diversity improvement.
+            </p>
+
+            <figure>
+                        
+                        <img src="assets/overview_method.png" alt="Image 1 description" style="max-width: 90%; height: auto;">
+                   <figcaption>
+                           Based on our findings, we introduce <b>G</b>ated and <b>A</b>daptive <b>R</b>egularization with <b>D</b>iversity-aware <b>O</b>ptimization (<b>GARDO</b>). GARDO employs an uncertainty-driven, gated KL mechanism to control the proportion of regulariza-
+tion, avoiding unnecessary penalties. Our proposed diversity-aware advantage shaping effectively encourages exploration of novel states.
+                        </figcaption><br>
+                    </figure>
+                    </div></div>
+    </section>
+    <section class="hero" style="margin: -20px 0; padding: 20px 0;">
+        <div class="hero-body" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+            <!-- Gallery Title -->
+            <div class="columns is-centered has-text-centered">
+                <div class="container is-max-maxwidth">
+            <div class="title is-3 sansfont" style="font-family: 'Acme'; color: #595959; font-size: 68px; margin-bottom: 15px;">
+                Results
+            </div>
+
+            
+    
+            <figure>
+                <figcaption>
+                    Learning curves and o.o.d. generalization results across GARDO and baselines when trained on GenEval task and OCR task. GARDO not only matches the sample efficiency of
+the KL-free baseline, but also mitigates reward hacking effectively, as evidenced by the superior performance on unseen metrics.
+                </figcaption>
+                <img src="assets/result1.png" alt="example image" style="width: 98%; height: auto;">
+            </figure>
+            <div class="title is-3 sansfont">
+                Visual Comparison
+            </div>
+            <p>
+We provide the generated images along the training process. As the training step increases, we ob-
+serve that Flow-GRPO obviously hacks the reward ( or exploits the flaws), yielding reduced perceptual visual quality.
+However, GARDO remains a high visual quality throughout the training process, without compromising optimization performance on the proxy reward
+            </p>
+            <br>
+            <figure>
+                <img src="assets/result2.png" alt="example image" style="width: 70%; height: auto;">
+            </figure>
+          <figure>
+                <img src="assets/result3.png" alt="example image" style="width: 70%; height: auto;">
+            </figure>
+          
+        </div>
+        </div>
+    </div>
+    
+<section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@misc{he2025gardo,
+        title={GARDO: Reinforcing Diffusion Models without Reward Hacking},
+        author={Haoran He and Yuxiao Ye and Jie Liu and Jiajun Liang and Zhiyong Wang and Ziyang Yuan and Xintao Wang and Hangyu Mao and Pengfei Wan and Ling Pan},
+        year={2025},
+        eprint={2505},
+        archivePrefix={arXiv},
+        primaryClass={cs.CV}
+    }</code></pre>
+    </div>
+  </section>
+</body>
+
+    
+
+
+
+   
+
+<footer class="footer" style="padding: 2em;">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+      </p>
+    </div>
+  </footer>
+
+</body>
+
+</html>
